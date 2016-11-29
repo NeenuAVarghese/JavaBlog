@@ -43,9 +43,10 @@
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
-                            <button ng-click="vm.addVote(vm.blog.id)"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
+                            <button type="submit"
+                            ui-sref="entry.edit({id:entry.id})"
+                                    class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-hand-up"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
                             <button type="submit"

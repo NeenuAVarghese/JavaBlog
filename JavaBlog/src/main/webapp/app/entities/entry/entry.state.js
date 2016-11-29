@@ -73,7 +73,7 @@
                     resolve: {
                         entity: ['Entry', function(Entry) {
                             return Entry.get({id : $stateParams.id}).$promise;
-                        }],
+                        }]
                         
                     }
                 }).result.then(function() {
@@ -115,20 +115,17 @@
         })
         .state('entry.edit', {
             parent: 'entry',
-            url: '/{id}/edit',
+            url: '/{id}/addVotes',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-            	console.log("in edit");
-            	$stateParams.vote ++;
-            	
                 $uibModal.open({
-                    templateUrl: 'app/entities/entry/entry-dialog.html',
-                    controller: 'EntryDialogController',
+                    templateUrl: 'app/entities/entry/voteUp.html',
+                    controller: 'VoteUpController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: ['Entry', function(Entry) {
                             return Entry.get({id : $stateParams.id}).$promise;

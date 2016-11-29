@@ -5,9 +5,9 @@
         .module('javaBlogApp')
         .controller('EntryController', EntryController);
 
-    EntryController.$inject = ['$scope', '$state', 'DataUtils', 'entity','Blog', 'Entry', 'ParseLinks', 'AlertService'];
+    EntryController.$inject = ['$scope', '$state', 'DataUtils', 'Entry', 'ParseLinks', 'AlertService'];
 
-    function EntryController ($scope, $state, DataUtils, entity, Blog, Entry, ParseLinks, AlertService) {
+    function EntryController ($scope, $state, DataUtils, Entry, ParseLinks, AlertService) {
         var vm = this;
 
         vm.entries = [];
@@ -22,6 +22,7 @@
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
         vm.addVote = addVote;
+      
         
         loadAll();
 
@@ -61,9 +62,7 @@
         
         function addVote(id){
         	console.log("okokokoko");
-        	
-        	
-        	
+            Entry.update(vm.entry);
         }
 
         function loadPage(page) {

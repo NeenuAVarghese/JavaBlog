@@ -48,6 +48,7 @@ public class EntryResource {
         if (entry.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("entry", "idexists", "A new entry cannot already have an ID")).body(null);
         }
+        entry.setVotes(0);
         Entry result = entryRepository.save(entry);
         return ResponseEntity.created(new URI("/api/entries/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("entry", result.getId().toString()))
@@ -70,6 +71,11 @@ public class EntryResource {
         if (entry.getId() == null) {
             return createEntry(entry);
         }
+        
+        int currentVotes = entry.getVotes();
+        currentVotes++;
+        entry.setVotes(currentVotes);
+        
         Entry result = entryRepository.save(entry);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("entry", entry.getId().toString()))

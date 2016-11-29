@@ -3,11 +3,11 @@
 
     angular
         .module('javaBlogApp')
-        .controller('EntryDialogController', EntryDialogController);
+        .controller('VoteUpController', VoteUpController);
 
-    EntryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Entry', 'Blog'];
+    VoteUpController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Entry', 'Blog'];
    
-    function EntryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Entry, Blog) {
+    function VoteUpController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Entry, Blog) {
         var vm = this;
 
         vm.entry = entity;
@@ -32,7 +32,6 @@
         function save () {
             vm.isSaving = true;
             if (vm.entry.id !== null) {
-            	vm.entry.votes ++;
                 Entry.update(vm.entry, onSaveSuccess, onSaveError);
             } else {
                 Entry.save(vm.entry, onSaveSuccess, onSaveError);
@@ -41,7 +40,6 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('javaBlogApp:entryUpdate', result);
-            $uibModalInstance.close(result);
             vm.isSaving = false;
         }
 
