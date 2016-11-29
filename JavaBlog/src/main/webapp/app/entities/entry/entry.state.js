@@ -101,7 +101,7 @@
                             return {
                                 title: null,
                                 content: null,
-                                votes: null,
+                                votes: 0,
                                 id: null
                             };
                         }
@@ -115,7 +115,7 @@
         })
         .state('entry.edit', {
             parent: 'entry',
-            url: '/{id}/addVotes',
+            url: '/{id}/addVotes?{uid}',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -128,13 +128,15 @@
                     size: 'md',
                     resolve: {
                         entity: ['Entry', function(Entry) {
-                            return Entry.get({id : $stateParams.id}).$promise;
+                        	console.log($stateParams);
+                            return Entry.get({id : $stateParams.id}, {uid : $stateParams.uid}).$promise;
                         }]
                     }
                 }).result.then(function() {
                     $state.go('entry', null, { reload: 'entry' });
                 }, function() {
                     $state.go('^');
+                    
                 });
             }]
         })

@@ -17,7 +17,6 @@
         vm.save = save;
         vm.blogs = Blog.query();
 
-        save();
         
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -32,7 +31,6 @@
         function save () {
             vm.isSaving = true;
             if (vm.entry.id !== null) {
-            	vm.entry.votes ++;
                 Entry.update(vm.entry, onSaveSuccess, onSaveError);
             } else {
                 Entry.save(vm.entry, onSaveSuccess, onSaveError);

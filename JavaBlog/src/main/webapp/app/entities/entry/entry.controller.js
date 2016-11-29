@@ -21,7 +21,7 @@
         vm.reverse = true;
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
-        vm.addVote = addVote;
+
       
         
         loadAll();
@@ -60,10 +60,6 @@
             loadAll();
         }
         
-        function addVote(id){
-        	console.log("okokokoko");
-            Entry.update(vm.entry);
-        }
 
         function loadPage(page) {
             vm.page = page;
