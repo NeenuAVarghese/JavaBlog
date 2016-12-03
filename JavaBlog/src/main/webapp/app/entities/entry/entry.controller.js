@@ -22,10 +22,7 @@
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
 
-      
-        
         loadAll();
-
 
         function loadAll () {
             Entry.query({
@@ -59,7 +56,6 @@
             vm.entries = [];
             loadAll();
         }
-        
 
         function loadPage(page) {
             vm.page = page;

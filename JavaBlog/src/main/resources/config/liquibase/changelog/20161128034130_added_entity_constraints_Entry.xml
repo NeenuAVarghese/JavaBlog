@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="blog"/>
 
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="entry"
+                                 constraintName="fk_entry_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
     </changeSet>
 </databaseChangeLog>

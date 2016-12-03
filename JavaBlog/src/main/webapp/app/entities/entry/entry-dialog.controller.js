@@ -5,9 +5,9 @@
         .module('javaBlogApp')
         .controller('EntryDialogController', EntryDialogController);
 
-    EntryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Entry', 'Blog'];
-   
-    function EntryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Entry, Blog) {
+    EntryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Entry', 'Blog', 'User'];
+
+    function EntryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Entry, Blog, User) {
         var vm = this;
 
         vm.entry = entity;
@@ -16,8 +16,8 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.blogs = Blog.query();
+        vm.users = User.query();
 
-        
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -25,8 +25,6 @@
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }
-        
-        
 
         function save () {
             vm.isSaving = true;

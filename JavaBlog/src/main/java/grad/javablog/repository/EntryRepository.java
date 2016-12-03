@@ -12,4 +12,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface EntryRepository extends JpaRepository<Entry,Long> {
 
+    @Query("select entry from Entry entry where entry.user.login = ?#{principal.username}")
+    List<Entry> findByUserIsCurrentUser();
+    
+    
+
 }

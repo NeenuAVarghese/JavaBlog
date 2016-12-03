@@ -24,8 +24,6 @@
                 }
             },
             resolve: {
-            	
-               
             }
         })
         .state('entry-detail', {
@@ -63,7 +61,6 @@
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-            	
                 $uibModal.open({
                     templateUrl: 'app/entities/entry/entry-dialog.html',
                     controller: 'EntryDialogController',
@@ -74,7 +71,6 @@
                         entity: ['Entry', function(Entry) {
                             return Entry.get({id : $stateParams.id}).$promise;
                         }]
-                        
                     }
                 }).result.then(function() {
                     $state.go('^', {}, { reload: false });
@@ -101,7 +97,7 @@
                             return {
                                 title: null,
                                 content: null,
-                                votes: 0,
+                                votes: null,
                                 id: null
                             };
                         }
@@ -115,7 +111,7 @@
         })
         .state('entry.edit', {
             parent: 'entry',
-            url: '/{id}/addVotes?{uid}',
+            url: '/{id}/addVotes',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -125,18 +121,16 @@
                     controller: 'VoteUpController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'md',
+                    size: 'lg',
                     resolve: {
                         entity: ['Entry', function(Entry) {
-                        	console.log($stateParams);
-                            return Entry.get({id : $stateParams.id}, {uid : $stateParams.uid}).$promise;
+                            return Entry.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
                     $state.go('entry', null, { reload: 'entry' });
                 }, function() {
                     $state.go('^');
-                    
                 });
             }]
         })

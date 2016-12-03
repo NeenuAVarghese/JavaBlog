@@ -20,6 +20,10 @@
         <dd>
             <a ui-sref="blog-detail({id:vm.entry.blog.id})">{{vm.entry.blog.blogName}}</a>
         </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.entry.user.login}}
+        </dd>
     </dl>
 
     <button type="submit"

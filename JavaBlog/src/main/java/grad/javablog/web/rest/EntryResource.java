@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import grad.javablog.domain.Entry;
 
 import grad.javablog.repository.EntryRepository;
+import grad.javablog.repository.UserRepository;
 import grad.javablog.web.rest.util.HeaderUtil;
 import grad.javablog.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -21,6 +22,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import grad.javablog.domain.User;
+import grad.javablog.web.rest.UserResource;
+
 
 /**
  * REST controller for managing Entry.
@@ -33,6 +37,9 @@ public class EntryResource {
         
     @Inject
     private EntryRepository entryRepository;
+    
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /entries : Create a new entry.
@@ -48,7 +55,13 @@ public class EntryResource {
         if (entry.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("entry", "idexists", "A new entry cannot already have an ID")).body(null);
         }
+        //Set author of blog to the currently logged in user
+        String user = grad.javablog.security.SecurityUtils.getCurrentUserLogin();
+        User userD = userRepository.findOneByLogin(user).get();
+        entry.setUser(userD);
+        //Set default vote count to 0
         entry.setVotes(0);
+        
         Entry result = entryRepository.save(entry);
         return ResponseEntity.created(new URI("/api/entries/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("entry", result.getId().toString()))
@@ -75,6 +88,7 @@ public class EntryResource {
         int currentVotes = entry.getVotes();
         currentVotes++;
         entry.setVotes(currentVotes);
+        
         
         Entry result = entryRepository.save(entry);
         return ResponseEntity.ok()

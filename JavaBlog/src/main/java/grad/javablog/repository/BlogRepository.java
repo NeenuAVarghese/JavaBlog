@@ -12,7 +12,4 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface BlogRepository extends JpaRepository<Blog,Long> {
 
-    @Query("select blog from Blog blog where blog.user.login = ?#{principal.username}")
-    List<Blog> findByUserIsCurrentUser();
-
 }

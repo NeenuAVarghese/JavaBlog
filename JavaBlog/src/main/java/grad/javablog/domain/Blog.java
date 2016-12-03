@@ -33,9 +33,6 @@ public class Blog implements Serializable {
     @Column(name = "blog_handle", nullable = false)
     private String blogHandle;
 
-    @ManyToOne
-    private User user;
-
     @OneToMany(mappedBy = "blog")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -73,19 +70,6 @@ public class Blog implements Serializable {
 
     public void setBlogHandle(String blogHandle) {
         this.blogHandle = blogHandle;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Blog user(User user) {
-        this.user = user;
-        return this;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Set<Entry> getEntries() {

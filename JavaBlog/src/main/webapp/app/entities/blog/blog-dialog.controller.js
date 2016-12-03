@@ -5,15 +5,14 @@
         .module('javaBlogApp')
         .controller('BlogDialogController', BlogDialogController);
 
-    BlogDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Blog', 'User', 'Entry'];
+    BlogDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Blog', 'Entry'];
 
-    function BlogDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Blog, User, Entry) {
+    function BlogDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Blog, Entry) {
         var vm = this;
 
         vm.blog = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.users = User.query();
         vm.entries = Entry.query();
 
         $timeout(function (){

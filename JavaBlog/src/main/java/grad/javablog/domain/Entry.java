@@ -38,6 +38,9 @@ public class Entry implements Serializable {
     @ManyToOne
     private Blog blog;
 
+    @ManyToOne
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -96,6 +99,19 @@ public class Entry implements Serializable {
 
     public void setBlog(Blog blog) {
         this.blog = blog;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Entry user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

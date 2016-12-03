@@ -82,7 +82,7 @@ public class BlogResource {
     @Timed
     public List<Blog> getAllBlogs() {
         log.debug("REST request to get all Blogs");
-        List<Blog> blogs = blogRepository.findByUserIsCurrentUser();
+        List<Blog> blogs = blogRepository.findAll();
         return blogs;
     }
 
