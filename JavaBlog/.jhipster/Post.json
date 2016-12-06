@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "blog",
+            "otherEntityName": "blog",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "blogHandle"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "postName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postContent",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "voteCount",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161206004113",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "post",
+    "pagination": "infinite-scroll"
+}

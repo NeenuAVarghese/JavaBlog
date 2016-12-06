@@ -34,10 +34,9 @@ spring:
         database: MYSQL
         show-sql: false
         properties:
-            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_second_level_cache: false
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: false
-            hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
     mail:
         host: localhost
         port: 25
@@ -64,13 +63,10 @@ jhipster:
     http:
         cache: # Used by the CachingHttpHeadersFilter
             timeToLiveInDays: 1461
-    cache: # Hibernate 2nd level cache, used by CacheConfiguration
-        ehcache:
-            maxBytesLocalHeap: 256M
     security:
         rememberMe:
             # security key (this key should be unique for your application, and kept secret)
-            key: c0b733133f0e37ae6c7c3defd5acba6620480083
+            key: c74acf6595a9c2fde4a43b2483e3a52a9e32465c
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: JavaBlog@localhost
         baseUrl: # keep empty to use the server's default URL

@@ -6,7 +6,7 @@
     "packageFolder": "grad/javablog",
     "serverPort": "8080",
     "authenticationType": "session",
-    "hibernateCache": "ehcache",
+    "hibernateCache": "no",
     "clusteredHttpSession": false,
     "websocket": false,
     "databaseType": "sql",
@@ -16,7 +16,7 @@
     "messageBroker": false,
     "buildTool": "maven",
     "enableSocialSignIn": false,
-    "rememberMeKey": "c0b733133f0e37ae6c7c3defd5acba6620480083",
+    "rememberMeKey": "c74acf6595a9c2fde4a43b2483e3a52a9e32465c",
     "useSass": false,
     "applicationType": "monolith",
     "testFrameworks": [

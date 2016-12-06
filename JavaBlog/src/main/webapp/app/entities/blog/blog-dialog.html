@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -17,25 +17,13 @@
             <label class="control-label" for="field_blogName">Blog Name</label>
             <input type="text" class="form-control" name="blogName" id="field_blogName"
                     ng-model="vm.blog.blogName"
-                    required />
-            <div ng-show="editForm.blogName.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.blogName.$error.required">
-                    This field is required.
-                </p>
-            </div>
+                     />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_blogHandle">Blog Handle</label>
             <input type="text" class="form-control" name="blogHandle" id="field_blogHandle"
                     ng-model="vm.blog.blogHandle"
-                    required />
-            <div ng-show="editForm.blogHandle.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.blogHandle.$error.required">
-                    This field is required.
-                </p>
-            </div>
+                     />
         </div>
 
     </div>

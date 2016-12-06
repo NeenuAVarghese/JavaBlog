@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Post</span> {{vm.post.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Post Name</span></dt>
+        <dd>
+            <span>{{vm.post.postName}}</span>
+        </dd>
+        <dt><span>Post Content</span></dt>
+        <dd>
+            <span>{{vm.post.postContent}}</span>
+        </dd>
+        <dt><span>Vote Count</span></dt>
+        <dd>
+            <span>{{vm.post.voteCount}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.post.user.login}}
+        </dd>
+        <dt><span>Blog</span></dt>
+        <dd>
+            <a ui-sref="blog-detail({id:vm.post.blog.id})">{{vm.post.blog.blogHandle}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="post-detail.edit({id:vm.post.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

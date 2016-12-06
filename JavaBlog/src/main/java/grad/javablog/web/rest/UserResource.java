@@ -173,6 +173,7 @@ public class UserResource {
                 .map(managedUserVM -> new ResponseEntity<>(managedUserVM, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
     /**
      * DELETE /users/:login : delete the "login" User.
      *

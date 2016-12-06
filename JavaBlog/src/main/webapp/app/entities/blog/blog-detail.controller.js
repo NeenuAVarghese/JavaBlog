@@ -5,9 +5,9 @@
         .module('javaBlogApp')
         .controller('BlogDetailController', BlogDetailController);
 
-    BlogDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Blog', 'Entry'];
+    BlogDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Blog'];
 
-    function BlogDetailController($scope, $rootScope, $stateParams, previousState, entity, Blog, Entry) {
+    function BlogDetailController($scope, $rootScope, $stateParams, previousState, entity, Blog) {
         var vm = this;
 
         vm.blog = entity;

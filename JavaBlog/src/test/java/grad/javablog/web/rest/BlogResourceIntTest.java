@@ -109,42 +109,6 @@ public class BlogResourceIntTest {
 
     @Test
     @Transactional
-    public void checkBlogNameIsRequired() throws Exception {
-        int databaseSizeBeforeTest = blogRepository.findAll().size();
-        // set the field null
-        blog.setBlogName(null);
-
-        // Create the Blog, which fails.
-
-        restBlogMockMvc.perform(post("/api/blogs")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(blog)))
-                .andExpect(status().isBadRequest());
-
-        List<Blog> blogs = blogRepository.findAll();
-        assertThat(blogs).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkBlogHandleIsRequired() throws Exception {
-        int databaseSizeBeforeTest = blogRepository.findAll().size();
-        // set the field null
-        blog.setBlogHandle(null);
-
-        // Create the Blog, which fails.
-
-        restBlogMockMvc.perform(post("/api/blogs")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(blog)))
-                .andExpect(status().isBadRequest());
-
-        List<Blog> blogs = blogRepository.findAll();
-        assertThat(blogs).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllBlogs() throws Exception {
         // Initialize the database
         blogRepository.saveAndFlush(blog);
