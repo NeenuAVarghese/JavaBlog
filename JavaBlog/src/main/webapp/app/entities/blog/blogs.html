@@ -18,7 +18,6 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr>
-                    <th><span>ID</span></th>
                     <th><span>Blog Name</span></th>
                     <th><span>Blog Handle</span></th>
                     <th></th>
@@ -26,7 +25,6 @@
             </thead>
             <tbody>
                 <tr ng-repeat="blog in vm.blogs track by blog.id">
-                    <td><a ui-sref="blog-detail({id:blog.id})">{{blog.id}}</a></td>
                     <td>{{blog.blogName}}</td>
                     <td>{{blog.blogHandle}}</td>
                     <td class="text-right">
